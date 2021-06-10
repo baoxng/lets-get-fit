@@ -8,6 +8,13 @@ const Workout = require("../models/Workout");
 router.get("/api/workouts", (req, res) => {
     Workout.find({})
       .then(dbWorkout => {
+        dbWorkout.forEach(workout => {
+            var total = 0;
+            workout.exercises.forEach(evt => {
+                total += evt.duration;
+            });
+            workout.totalDuration = total;
+        });   
         res.json(dbWorkout);
       })
       .catch(err => {
@@ -27,12 +34,13 @@ router.post("/api/workouts", ({ body }, res) => {
   });
 
 
-//Updateing workouts
+//Adding exercise
 router.put("/api/workouts/:id", ({ body, params }, res) => {
     Workout.findByIdAndUpdate(
         params.id,
         {
-           $push: {exercises: body} 
+            $inc: { totalDuration: req.body.duration }, 
+            $push: {exercises: body} 
         },
         {
             new: true,
