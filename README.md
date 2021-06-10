@@ -31,7 +31,7 @@ npm install
 
 ## Documentation
 
-Here is a [Link]() to the deployed application. 
+Here is a [Link](https://the-fitness-trackers.herokuapp.com/stats) to the deployed application. 
 
 ## Liscense 
 ![GitHub License](https://img.shields.io/github/license/baoxng/lets-get-fit)
