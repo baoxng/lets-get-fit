@@ -1,4 +1,5 @@
 //Require for router
+const router = require('express').Router();
 
 //Need model for workouts
 
